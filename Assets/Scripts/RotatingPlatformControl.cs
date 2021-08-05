@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class RotatingPlatformControl : MonoBehaviour
 {
-    [SerializeField] RotateObject _rotateValue;
+    [SerializeField]  RotateObject _rotateValue;
+  
     private void Update()
     {
-        transform.Rotate(_rotateValue.rotateVector*Time.deltaTime);
       
+        
+        transform.Rotate(_rotateValue.rotateVector*Time.deltaTime);
+        
     }
     
 

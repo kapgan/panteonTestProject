@@ -20,18 +20,20 @@ public class HorizontalObstacleMovement : MonoBehaviour
         if (timer)
         {
             time += Time.deltaTime;
-            if(time>interval)
-            if(forceSpeed>0)
+            if (time > interval)
             { 
-                forceSpeed = -speed;
-                timer = false;
-                time = 0;
-            }
-            else if(forceSpeed<0)
-            { 
-                forceSpeed = speed;
-                timer = false;
-                time = 0;
+                if (forceSpeed > 0)
+                {
+                    forceSpeed = -speed;
+                    timer = false;
+                    time = 0;
+                }
+                else if (forceSpeed < 0)
+                {
+                    forceSpeed = speed;
+                    timer = false;
+                    time = 0;
+                }
             }
         }
     }

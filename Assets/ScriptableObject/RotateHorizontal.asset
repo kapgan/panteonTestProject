@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd5cf19ac8fdf1e49885ee33f52e76a0, type: 3}
   m_Name: RotateHorizontal
   m_EditorClassIdentifier: 
-  rotateVector: {x: 0, y: 0, z: 0}
+  rotateVector: {x: 0, y: 360, z: 0}
