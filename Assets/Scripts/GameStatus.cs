@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Concurrent;
 public class GameStatus : MonoBehaviour
 {
+    [SerializeField] List<Transform> startPoint= new List<Transform>();
     private void Update()
     {
         if (Input.GetKey(KeyCode.R))
@@ -15,9 +17,11 @@ public class GameStatus : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Obstacle"))
+        if (collision.gameObject.tag == "Obstacle")
         {
-            restart();
+
+            transform.position = startPoint[Random.Range(1, 11)].position;
         }
+
     }
 }

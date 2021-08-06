@@ -39,7 +39,7 @@ public class HorizontalObstacleMovement : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "kenar")
+        if (collision.gameObject.tag == "kenar" || collision.gameObject.tag=="Obstacle")
         {
             timer = true;
         }
