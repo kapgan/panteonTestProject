@@ -9,6 +9,8 @@ TagManager:
   - LeftRotateObstacle
   - Ground
   - kenar
+  - SlopeRoad
+  - ObstaclePushing
   layers:
   - Default
   - TransparentFX
