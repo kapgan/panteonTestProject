@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float _forwardspeed = 5f;
-   
+   [SerializeField]
     float _jumpSpeed = 5f;
     public float fx=10;
 
@@ -21,17 +21,14 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        if (!_final) { 
+        if (!_final) {
         Vector3 m_Input = new Vector3(Input.GetAxis("Horizontal")/surtunme-_playerXValue, 0, Input.GetAxis("Vertical")/surtunme);
         rb.MovePosition(transform.position + m_Input * Time.deltaTime * _forwardspeed);
         }
     
     }
 
-    public void pushedfromObstacle(Vector3 pushingVector)
-    {
-        Debug.Log(pushingVector);
-    }
+
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -86,6 +83,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             rb.velocity = Vector3.up * Time.deltaTime * _jumpSpeed/surtunme;
+            Debug.Log("zıpla");
         }
     }
 }
