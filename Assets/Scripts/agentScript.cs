@@ -8,10 +8,10 @@ public class agentScript : MonoBehaviour
     [SerializeField] GameObject finish;
     Rigidbody rb;
     NavMeshAgent ajan;
-    [SerializeField] float dx=300;
-    float _playerXValue, surtunme = 2;
+    [SerializeField] float fx=300;
+    Vector3 direction;
+    float  surtunme = 2;
     public List<Transform> startPoint = new List<Transform>();
-
     void Start()
     {
       
@@ -20,63 +20,56 @@ public class agentScript : MonoBehaviour
         ajan.SetDestination(finish.transform.position);
     }
 
-    // Update is called once per frame
-    void Update()
+  
+    void ajanBaslat(bool sifirla)
     {
-        //ajan.SetDestination(finish.transform.position);
-
-        
-    }
-    void ajanBaslat()
-    {
+        if(sifirla==true)
         transform.position = startPoint[Random.Range(1, 11)].position;
         ajan.enabled = true;
+        
         ajan.SetDestination(finish.transform.position);
 
     }
-    void sayac(float saniye)
+    void sayac(float saniye,bool sifirla)
     {
         float t = 0;
 
         do
         {
-            t += Time.deltaTime;
-
+            t += Time.fixedDeltaTime;
+          
         }
         while (t < saniye);
-            
-        ajanBaslat();
+            if(t>=saniye)
+        ajanBaslat(sifirla);
     }
     private void OnCollisionEnter(Collision collision)
     {
 
         if (collision.gameObject.tag == "Obstacle" || collision.gameObject.tag == "korkuluk")
         {
-            //ajan.enabled = false;
-            Debug.Log("Restart");
-            //transform.position = startPoint.position;
+      
             ajan.enabled = false;
-            //transform.position = startPoint.position;
-            sayac(1.5f);
+       
+            sayac(1.5f,true);
         }
         if (collision.gameObject.tag == "SlopeRoad")
         {
             
             ajan.speed  /=surtunme ;
         }
-        if (collision.gameObject.tag == "Ground")
-        {
-            _playerXValue = 0f;
-            
-        }
+  
         if (collision.gameObject.tag == "ObstaclePushing")
         {
 
-            //Vector3 direction = (transform.position - collision.transform.position).normalized;
+       
             ajan.enabled = false;
-            Vector3 direction = (transform.position - collision.transform.position).normalized;
-            rb.AddForce(direction * dx);
-            sayac(1.5f);
+             direction = (transform.position - collision.transform.position).normalized;
+     
+
+        
+            rb.AddForce(direction*fx);
+            sayac(1.5f,false);
         }
        
 
@@ -89,14 +82,14 @@ public class agentScript : MonoBehaviour
          
             
            
-           transform.position = (transform.position + new Vector3(1, 0, 0) *Time.deltaTime);
+           transform.position = (transform.position + new Vector3(1.5f, 0, 0) *Time.deltaTime);
             
         }
         else if (collision.gameObject.tag == "LeftRotateObstacle")
         {
     
             
-            transform.position=(transform.position + new Vector3(-1, 0, 0)*Time.deltaTime );
+            transform.position=(transform.position + new Vector3(-1.5f, 0, 0)*Time.deltaTime );
            
         }
     }
