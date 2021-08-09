@@ -6,27 +6,19 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField] playerObject playerObject;
 
-    public  List<Transform> startPoint = new List<Transform>();
+    
     public Transform finish;
-     float geriTepmeKatSayisi;
-     float playerSpeed;
-     float jumpPower;
+    [SerializeField] float agentSpeed;
     Vector3[] points;
     GameObject agent;
     private void Start()
     {
         points = playerObject._points;
-        geriTepmeKatSayisi = playerObject._geriTepmeKatSayisi;
-        playerSpeed = playerObject._playerSpeed;
-        jumpPower = playerObject._jumpPower;
         agent = playerObject._agent;
-        foreach(var point in points)
+        for (int i=1;i<points.Length-1; i++)
         {
-            Debug.Log(point);
-            var a=Instantiate(agent, point,Quaternion.identity);
-           // a.transform.GetComponent<NavMeshAgent>().speed = 3.5f;
-            //a.transform.GetComponent<NavMeshAgent>().SetDestination(finish.transform.position);
-           
+            var a=Instantiate(agent, points[i],Quaternion.identity);
+            a.GetComponent<agentScript>().ajan.speed = agentSpeed;
         }
     }
  

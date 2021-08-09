@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 6487791634193620602}
   - component: {fileID: 4686479670419603373}
   - component: {fileID: 657730906}
+  - component: {fileID: 213816025}
+  - component: {fileID: 4998569561291620653}
   m_Layer: 0
   m_Name: HorizontalObstacle
   m_TagString: Obstacle
@@ -108,3 +110,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotateValue: {fileID: 11400000, guid: 50b881b31a036984cbc0be7989a7a72d, type: 2}
+--- !u!114 &213816025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4686479670419603375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e23d6555e9a714688246b6028d2632, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  speed: 2
+  forceSpeed: 0
+  timer: 0
+  time: 0
+  interval: 0.5
+--- !u!114 &4998569561291620653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4686479670419603375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68a6522e14cb2204c9e5fcd5494f384d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerObject: {fileID: 11400000, guid: fce5c26ece0bbe640b9cdfdd8457a323, type: 2}

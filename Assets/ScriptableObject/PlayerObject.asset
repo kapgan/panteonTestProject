@@ -19,11 +19,9 @@ MonoBehaviour:
   - {x: 0, y: 0.1, z: -13}
   - {x: 0.4, y: 0.1, z: -13}
   - {x: 0.8, y: 0, z: -12}
-  - {x: -1.16, y: 0, z: -12}
+  - {x: -0.8, y: 0, z: -13}
   - {x: -0.4, y: 0, z: -12}
   - {x: -0.8, y: 0, z: -12}
   - {x: 0.4, y: 0, z: -12}
-  _geriTepmeKatSayisi: 600
-  _playerSpeed: 3.5
-  _jumpPower: 10
+  - {x: 0, y: 0, z: -12}
   _agent: {fileID: 1796351910950634938, guid: fe9087042978ca44db8038e2c3eb7929, type: 3}

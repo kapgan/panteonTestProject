@@ -83,7 +83,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 3.23
+  m_Height: 2.84
   m_Direction: 1
   m_Center: {x: 0, y: 1.13, z: 0}
 --- !u!114 &1453683402970861509
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c758595abfbe2c946b4516e1b9c99ac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ajan: {fileID: 1453683402970861508}
   fx: 300
   playerObject: {fileID: 11400000, guid: fce5c26ece0bbe640b9cdfdd8457a323, type: 2}
 --- !u!195 &1453683402970861508
@@ -110,7 +111,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

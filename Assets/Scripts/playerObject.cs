@@ -6,8 +6,6 @@ using UnityEngine;
 public class playerObject : ScriptableObject
 {
     public Vector3[] _points;
-    public float _geriTepmeKatSayisi;
-    public float _playerSpeed;
-    public float _jumpPower;
+
     public GameObject _agent;
 }

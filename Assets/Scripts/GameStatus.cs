@@ -3,25 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Concurrent;
-public class GameStatus : MonoBehaviour
-{
-    [SerializeField] List<Transform> startPoint= new List<Transform>();
-    private void Update()
+
+    public class GameStatus : MonoBehaviour
     {
-        if (Input.GetKey(KeyCode.R))
-            restart();
-    }
-    void restart()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Obstacle")
+      
+        private void Update()
         {
-
-            transform.position = startPoint[Random.Range(1, 11)].position;
+            if (Input.GetKey(KeyCode.R))
+                restart();
         }
+        void restart()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
+        }
+      
     }
-}
