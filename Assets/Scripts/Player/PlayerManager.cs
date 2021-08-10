@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] playerObject playerObject;
+    [SerializeField] PlayerObject playerObject;
     public Transform finish;
     [SerializeField] float agentSpeed;
 
@@ -12,6 +12,7 @@ public class PlayerManager : MonoBehaviour
     GameObject agent;
 
     [SerializeField] GameObject player;
+
     GameObject[] agents = new GameObject[10];
     GameObject[] siralama = new GameObject[11];
 
@@ -24,7 +25,7 @@ public class PlayerManager : MonoBehaviour
         for (int i = 0; i < points.Length - 1; i++)
         {
             var a = Instantiate(agent, points[i], Quaternion.identity);
-            a.GetComponent<agentScript>().ajan.speed = agentSpeed;
+            a.GetComponent<AgentScript>().ajan.speed = agentSpeed;
             a.name = "Agent" + i;
             agents[i] = a;
             siralama[i] = agents[i];

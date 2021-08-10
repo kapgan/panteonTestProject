@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class ObstacleScript : MonoBehaviour
 {
-    [SerializeField] playerObject _playerObject;
+    [SerializeField] PlayerObject _playerObject;
 
     private void playerMove(Collision col)
     {
-      
         col.transform.position =_playerObject._points[Random.Range(1, _playerObject._points.Length)];
         col.rigidbody.velocity = (Vector3.zero);
     }
@@ -18,11 +17,11 @@ public class ObstacleScript : MonoBehaviour
         {
             playerMove(collision);
         }
-        if ( collision.gameObject.tag == "agent")
+        if ( collision.gameObject.tag == "Agent")
         {
-            collision.gameObject.GetComponent<agentScript>().ajan.enabled = false;
+            collision.gameObject.GetComponent<AgentScript>().ajan.enabled = false;
             playerMove(collision);
-            collision.gameObject.GetComponent<agentScript>().wakeUp();
+            collision.gameObject.GetComponent<AgentScript>().wakeUp();
         }
     }
 }

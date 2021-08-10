@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-public class agentScript : MonoBehaviour
+public class AgentScript : MonoBehaviour
 {
-   
-    Rigidbody rb;
+    public Animator anim;
     public NavMeshAgent ajan;
 
-    Vector3 final=new Vector3(0,3,30);
-    public Animator anim;
+    private Rigidbody rb;
+    private Vector3 final = new Vector3(0, 3, 30);
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -18,9 +18,9 @@ public class agentScript : MonoBehaviour
         wakeUp();
     }
 
-    public  void wakeUp()
+    public void wakeUp()
     {
-        ajan.enabled =  true;
+        ajan.enabled = true;
         ajan.SetDestination(final);
     }
 

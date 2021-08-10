@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1453683402970861508}
   m_Layer: 0
   m_Name: Girl
-  m_TagString: agent
+  m_TagString: Agent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c758595abfbe2c946b4516e1b9c99ac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ajan: {fileID: 1453683402970861508}
   anim: {fileID: 0}
+  ajan: {fileID: 1453683402970861508}
 --- !u!195 &1453683402970861508
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -4,18 +4,19 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Concurrent;
 
-    public class GameStatus : MonoBehaviour
+public class GameStatus : MonoBehaviour
+{
+    private void Update()
     {
-      
-        private void Update()
-        {
-            if (Input.GetKey(KeyCode.R))
-                restart();
-        }
-        void restart()
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
-        }
-      
+        if (Input.GetKey(KeyCode.R))
+            restart();
     }
+    void restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void LevelMenu()
+    {
+
+    }
+}

@@ -318,7 +318,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 32
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1022,6 +1022,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 571045d48cec88d48848f53bf379f673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  percentage: {fileID: 86302661}
   cam: {fileID: 2035939487}
   heightmap: {fileID: 2800000, guid: c4a1a7d8aa0f0e94c86ea426ded46bfd, type: 3}
   size: {x: 100, y: 10, z: 100}
@@ -1591,7 +1592,7 @@ PrefabInstance:
     - target: {fileID: 2493012509202364972, guid: 258a360d902dbac4fa192d9e09c7be0a,
         type: 3}
       propertyPath: m_Depth
-      value: 1.65
+      value: -1.08
       objectReference: {fileID: 0}
     - target: {fileID: 2493012509202364972, guid: 258a360d902dbac4fa192d9e09c7be0a,
         type: 3}
@@ -3779,7 +3780,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _forwardspeed: 2.6
   _jumpSpeed: 3
-  rotationSpeed: 720
+  _rotationSpeed: 720
   _animator: {fileID: 0}
   _final: 0
   _playerXValue: 0

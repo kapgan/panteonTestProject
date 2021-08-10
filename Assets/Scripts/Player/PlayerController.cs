@@ -6,10 +6,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float _forwardspeed = 5f;
-    [SerializeField]
+    [SerializeField] 
+    float _forwardspeed = 5f;
+    [SerializeField]    
     float _jumpSpeed = 2f;
-    [SerializeField] float _rotationSpeed = 720;
+    [SerializeField]
+    float _rotationSpeed = 720;
 
     public Animator _animator;
     public bool _final = false;
@@ -26,18 +28,15 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-      
         if (!_final)
         {
             Vector3 m_Input = new Vector3(Input.GetAxis("Horizontal") - _playerXValue, 0, Input.GetAxis("Vertical"));
             m_Input.Normalize();
-            // rb.MovePosition(transform.position + transform.TransformDirection(m_Input * Time.deltaTime * _forwardspeed));
             transform.Translate(m_Input * _forwardspeed * Time.deltaTime / surtunme, Space.World);
 
             if (m_Input != Vector3.zero)
             {
                 _animator.SetBool("Running", true);
-                //transform.forward = m_Input;
                 Quaternion toRotation = Quaternion.LookRotation(m_Input, Vector3.up);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, _rotationSpeed * Time.deltaTime);
             }
@@ -49,7 +48,7 @@ public class PlayerController : MonoBehaviour
                 _isGrounded = false;
                 rb.AddForce(new Vector3(0, _jumpSpeed / surtunme, 0),ForceMode.Impulse);
                 _animator.SetTrigger("Jump");
-                Debug.Log("jump");
+               
             }
         }
     }
@@ -62,8 +61,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        Debug.Log("s");
-
-        _isGrounded = collision.gameObject.tag != "agent" ? true : false;
+        _isGrounded = collision.gameObject.tag != "Agent" ? true : false;
     }
 }

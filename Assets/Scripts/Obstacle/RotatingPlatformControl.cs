@@ -8,7 +8,6 @@ public class RotatingPlatformControl : MonoBehaviour
   
     private void Update()
     {
- 
         transform.Rotate(_rotateValue.rotateVector*Time.deltaTime);
     }
     private void OnCollisionStay(Collision collision)
@@ -19,6 +18,4 @@ public class RotatingPlatformControl : MonoBehaviour
             collision.rigidbody.velocity=( (direction) * Time.deltaTime);
         }
     }
-
-
 }

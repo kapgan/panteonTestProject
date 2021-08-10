@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class finishScript : MonoBehaviour
+public class FinishScript : MonoBehaviour
 {
     [SerializeField] Camera cam;
     [SerializeField] GameObject draweblaWall;
@@ -11,27 +11,22 @@ public class finishScript : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Finish");
             var player = other.gameObject.GetComponent<PlayerController>();
-
             player._final = true;
-            player._animator.SetBool("finish", true);
+            player._animator.SetBool("Finish", true);
             cam.depth += 1;
             draweblaWall.SetActive(true);
             foreach (var item in leadBoard)
             {
                 item.enabled = false;
             }
-
-
-
+       
         }
-        else if (other.gameObject.tag == "agent")
+        else if (other.gameObject.tag == "Agent")
         {
-
-            var agent = other.gameObject.GetComponent<agentScript>();
+            var agent = other.gameObject.GetComponent<AgentScript>();
             agent.ajan.enabled = false;
-            agent.anim.SetBool("finish", true);
+            agent.anim.SetBool("Finish", true);
         }
     }
 }
