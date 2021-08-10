@@ -47,8 +47,7 @@ namespace FreeDraw
         bool mouse_was_previously_held_down = false;
         bool no_drawing_on_current_drag = false;
 
-        [SerializeField] bool[,] dizi= new bool[700,700];
-        [SerializeField] float yuzde = 0, counter = 0;
+     
 
         //////////////////////////////////////////////////////////////////////////////
         // BRUSH TYPES. Implement your own here

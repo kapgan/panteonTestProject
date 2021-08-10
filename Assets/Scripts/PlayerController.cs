@@ -4,54 +4,66 @@ using UnityEngine;
 
 
 
-    public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour
+{
+    [SerializeField] float _forwardspeed = 5f;
+    [SerializeField]
+    float _jumpSpeed = 2f;
+    [SerializeField] float rotationSpeed = 720;
+
+    Animator _animator;
+    public bool _final = false;
+    public float _playerXValue = 0;
+    public float surtunme = 1;
+    public bool _isGrounded = true;
+    Rigidbody rb;
+    private void Start()
     {
-        [SerializeField] float _forwardspeed = 5f;
-        [SerializeField]
-        float _jumpSpeed = 5f;
-      [SerializeField] float rotationSpeed=720;
+        rb = GetComponent<Rigidbody>();
+        _animator = GetComponent<Animator>();
+    }
 
-
-        public bool _final = false;
-        public float _playerXValue = 0;
-        public float surtunme = 1;
-
-        Rigidbody rb;
-        private void Start()
-        {
-            rb = GetComponent<Rigidbody>();
-        }
+    private void Update()
+    {
       
-        private void Update()
+        if (!_final)
         {
-            if (!_final)
-            {
-            Vector3 m_Input = new Vector3(Input.GetAxis("Horizontal")  - _playerXValue, 0, Input.GetAxis("Vertical"));
+            Vector3 m_Input = new Vector3(Input.GetAxis("Horizontal") - _playerXValue, 0, Input.GetAxis("Vertical"));
             m_Input.Normalize();
-
             // rb.MovePosition(transform.position + transform.TransformDirection(m_Input * Time.deltaTime * _forwardspeed));
-            transform.Translate(m_Input * _forwardspeed * Time.deltaTime/surtunme, Space.World);
+            transform.Translate(m_Input * _forwardspeed * Time.deltaTime / surtunme, Space.World);
 
             if (m_Input != Vector3.zero)
             {
+                _animator.SetBool("Running", true);
                 //transform.forward = m_Input;
                 Quaternion toRotation = Quaternion.LookRotation(m_Input, Vector3.up);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
             }
-                
-        }
+            else
+                _animator.SetBool("Running", false);
 
-    }
-
-
-
-        private void OnCollisionStay(Collision collision)
-        {
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
             {
-            rb.AddForce(new Vector3(0, _jumpSpeed/surtunme, 0), ForceMode.Impulse);
-            //transform.velocity = Vector3.up * Time.deltaTime * _jumpSpeed;
+                _isGrounded = false;
+                rb.AddForce(new Vector3(0, _jumpSpeed / surtunme, 0),ForceMode.Impulse);
+                _animator.SetTrigger("Jump");
+                Debug.Log("jump");
+            }
 
         }
-        }
     }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        _isGrounded = false;
+     
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        
+        _isGrounded = collision.gameObject.tag != "agent" ? true : false;
+      
+    }
+}

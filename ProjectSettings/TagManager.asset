@@ -12,6 +12,7 @@ TagManager:
   - SlopeRoad
   - ObstaclePushing
   - agent
+  - RotateObs
   layers:
   - Default
   - TransparentFX
