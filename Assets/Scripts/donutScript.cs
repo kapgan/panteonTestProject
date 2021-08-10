@@ -16,13 +16,17 @@ public class donutScript : MonoBehaviour
 
     void FixedUpdate()
     {
-     
-        if(transform.position.x<x & time==0)
-        transform.position =  transform.position + new Vector3(y,0,0)*Time.fixedDeltaTime;
+
+        UpdateDonutMovement();
+    }
+   void UpdateDonutMovement()
+    {
+        if (transform.position.x < x & time == 0)
+            transform.position = transform.position + new Vector3(y, 0, 0) * Time.fixedDeltaTime;
         else
         {
             time += Time.fixedDeltaTime;
-            if(time>=t)
+            if (time >= t)
             {
                 if (transform.position.x > x2)
                 {
@@ -32,6 +36,5 @@ public class donutScript : MonoBehaviour
                     time = 0;
             }
         }
-
     }
 }

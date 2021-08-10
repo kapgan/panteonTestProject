@@ -9,7 +9,7 @@ public class ObstacleScript : MonoBehaviour
     private void playerMove(Collision col)
     {
       
-        col.transform.position =_playerObject._points[Random.RandomRange(1, _playerObject._points.Length)];
+        col.transform.position =_playerObject._points[Random.Range(1, _playerObject._points.Length)];
         col.rigidbody.velocity = (Vector3.zero);
     }
     private void OnCollisionEnter(Collision collision)

@@ -12,8 +12,10 @@ public class finishScript : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Debug.Log("Finish");
+            var player = other.gameObject.GetComponent<PlayerController>();
 
-            other.gameObject.GetComponent<PlayerController>()._final = true;
+            player._final = true;
+            player._animator.SetBool("finish", true);
             cam.depth += 1;
             draweblaWall.SetActive(true);
             foreach (var item in leadBoard)
@@ -21,10 +23,15 @@ public class finishScript : MonoBehaviour
                 item.enabled = false;
             }
 
+
+
         }
         else if (other.gameObject.tag == "agent")
         {
-            other.gameObject.GetComponent<agentScript>().ajan.enabled = false;
+
+            var agent = other.gameObject.GetComponent<agentScript>();
+            agent.ajan.enabled = false;
+            agent.anim.SetBool("finish", true);
         }
     }
 }

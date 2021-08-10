@@ -9,9 +9,10 @@ public class agentScript : MonoBehaviour
     public NavMeshAgent ajan;
 
     Vector3 final=new Vector3(0,3,30);
-
+    public Animator anim;
     void Start()
     {
+        anim = GetComponent<Animator>();
         ajan = transform.GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
         wakeUp();

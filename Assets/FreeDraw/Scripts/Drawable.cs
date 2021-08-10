@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace FreeDraw
 {
-    
+
     [RequireComponent(typeof(SpriteRenderer))]
     [RequireComponent(typeof(Collider2D))]  // REQUIRES A COLLIDER2D to function
     // 1. Attach this to a read/write enabled sprite image
@@ -12,13 +12,15 @@ namespace FreeDraw
     // 3. Attach a 2D collider (like a Box Collider 2D) to this sprite
     // 4. Hold down left mouse to draw on this texture!
     public class Drawable : MonoBehaviour
-    {[SerializeField] Camera cam;
+    {
+        [SerializeField] TMPro.TextMeshProUGUI percentage;
+        [SerializeField] Camera cam;
         public Texture2D heightmap;
         public Vector3 size = new Vector3(100, 10, 100);
         // PEN COLOUR
         public static Color Pen_Colour = Color.red;     // Change these to change the default drawing settings
-        // PEN WIDTH (actually, it's a radius, in pixels)
-      public static int Pen_Width =20;
+                                                        // PEN WIDTH (actually, it's a radius, in pixels)
+        public static int Pen_Width = 20;
 
         [SerializeField] bool bak = false;
         public delegate void Brush_Function(Vector2 world_position);
@@ -32,7 +34,7 @@ namespace FreeDraw
         public bool Reset_Canvas_On_Play = true;
         // The colour the canvas is reset to each time
         public Color Reset_Colour = new Color(0, 0, 0, 0);  // By default, reset the canvas to be transparent
-        
+
 
         // Used to reference THIS specific file without making all methods static
         public static Drawable drawable;
@@ -47,7 +49,7 @@ namespace FreeDraw
         bool mouse_was_previously_held_down = false;
         bool no_drawing_on_current_drag = false;
 
-     
+
 
         //////////////////////////////////////////////////////////////////////////////
         // BRUSH TYPES. Implement your own here
@@ -70,7 +72,7 @@ namespace FreeDraw
             // Do we care about the user left clicking and dragging?
             // If you don't, simply set the below if statement to be:
             //if (true)
-  
+
             // If you do care about dragging, use the below if/else structure
             if (previous_drag_position == Vector2.zero)
             {
@@ -78,35 +80,35 @@ namespace FreeDraw
                 // FILL IN WHATEVER YOU WANT TO DO HERE
                 // Maybe mark multiple pixels to colour?
                 MarkPixelsToColour(pixel_pos, Pen_Width, Pen_Colour);
-                
+
             }
             else
             {
-                
+
                 // THE USER IS DRAGGING
                 // Should we do stuff between the previous mouse position and the current one?
                 ColourBetween(previous_drag_position, pixel_pos, Pen_Width, Pen_Colour);
-                
+
             }
             ////////////////////////////////////////////////////////////////
-            
+
             // 3. Actually apply the changes we marked earlier
             // Done here to be more efficient
             ApplyMarkedPixelChanges();
-            
+
             // 4. If dragging, update where we were previously
             previous_drag_position = pixel_pos;
         }
 
 
 
-        
+
         // Default brush type. Has width and colour.
         // Pass in a point in WORLD coordinates
         // Changes the surrounding pixels of the world_point to the static pen_colour
         public void PenBrush(Vector2 world_point)
         {
-            
+
 
             Vector2 pixel_pos = WorldToPixelCoordinates(world_point);
 
@@ -136,7 +138,7 @@ namespace FreeDraw
             // PenBrush is the NAME of the method we want to set as our current brush
             current_brush = PenBrush;
         }
-//////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -149,10 +151,10 @@ namespace FreeDraw
         {
             if (bak)
             {
-            percentileCalc();
+                percentileCalc();
                 bak = false;
             }
-            
+
             // Is the user holding down the left mouse button?
             bool mouse_held_down = Input.GetMouseButton(0);
             if (mouse_held_down && !no_drawing_on_current_drag)
@@ -166,10 +168,11 @@ namespace FreeDraw
                 {
                     // We're over the texture we're drawing on!
                     // Use whatever function the current brush is
-                 
 
-                    Debug.Log(mouse_world_position.x+"--"+mouse_world_position.y);
-                    current_brush(mouse_world_position);    
+
+                    Debug.Log(mouse_world_position.x + "--" + mouse_world_position.y);
+                    current_brush(mouse_world_position);
+                    percentileCalc();
                 }
 
                 else
@@ -198,7 +201,7 @@ namespace FreeDraw
         // Set the colour of pixels in a straight line from start_point all the way to end_point, to ensure everything inbetween is coloured
         public void ColourBetween(Vector2 start_point, Vector2 end_point, int width, Color color)
         {
-           
+
             // Get the distance from start to finish
             float distance = Vector2.Distance(start_point, end_point);
             Vector2 direction = (start_point - end_point).normalized;
@@ -221,7 +224,7 @@ namespace FreeDraw
 
         public void MarkPixelsToColour(Vector2 center_pixel, int pen_thickness, Color color_of_pen)
         {
-          
+
             // Figure out how many pixels we need to colour in each direction (x and y)
             int center_x = (int)center_pixel.x;
             int center_y = (int)center_pixel.y;
@@ -242,7 +245,7 @@ namespace FreeDraw
         }
         public void MarkPixelToChange(int x, int y, Color color)
         {
-          
+
             // Need to transform x and y coordinates to flat coordinates of array
             int array_pos = y * (int)drawable_sprite.rect.width + x;
 
@@ -254,7 +257,7 @@ namespace FreeDraw
         }
         public void ApplyMarkedPixelChanges()
         {
-            
+
             drawable_texture.SetPixels32(cur_colors);
             drawable_texture.Apply();
         }
@@ -265,29 +268,30 @@ namespace FreeDraw
         // Colours both the center pixel, and a number of pixels around the center pixel based on pen_thickness (pen radius)
         public void ColourPixels(Vector2 center_pixel, int pen_thickness, Color color_of_pen)
         {
-            
+
             // Figure out how many pixels we need to colour in each direction (x and y)
             int center_x = (int)center_pixel.x;
             int center_y = (int)center_pixel.y;
             //int extra_radius = Mathf.Min(0, pen_thickness - 2);
-         
+
             for (int x = center_x - pen_thickness; x <= center_x + pen_thickness; x++)
             {
                 for (int y = center_y - pen_thickness; y <= center_y + pen_thickness; y++)
                 {
-                   
+
                     drawable_texture.SetPixel(x, y, color_of_pen);
-              
+
                 }
             }
-
+            
             drawable_texture.Apply();
+
         }
 
 
         public Vector2 WorldToPixelCoordinates(Vector2 world_position)
         {
-           
+
             // Change coordinates to local coordinates of this image
             Vector3 local_pos = transform.InverseTransformPoint(world_position);
 
@@ -299,7 +303,7 @@ namespace FreeDraw
             // Need to center our coordinates
             float centered_x = local_pos.x * unitsToPixels + pixelWidth / 2;
             float centered_y = local_pos.y * unitsToPixels + pixelHeight / 2;
-           // gx = (int)pixelWidth; gy = (int)pixelHeight;
+            // gx = (int)pixelWidth; gy = (int)pixelHeight;
             // Round current mouse position to nearest pixel
             Vector2 pixel_pos = new Vector2(Mathf.RoundToInt(centered_x), Mathf.RoundToInt(centered_y));
 
@@ -310,13 +314,13 @@ namespace FreeDraw
         // Changes every pixel to be the reset colour
         public void ResetCanvas()
         {
-            
+
             drawable_texture.SetPixels(clean_colours_array);
             drawable_texture.Apply();
         }
 
 
-        
+
         void Awake()
         {
             drawable = this;
@@ -338,11 +342,19 @@ namespace FreeDraw
 
         void percentileCalc()
         {
-             for(int x=0;x<10;x++)
-             for(int y=0; y<100; y++) {
-            Color a= drawable_texture.GetPixel(x,y);
-                Debug.Log(a.r);
-          }
+            float count = 0;
+
+            Debug.Log("1");
+            for (int x = 0; x < drawable_texture.height; x++)
+                for (int y = 0; y < drawable_texture.width; y++)
+                {
+
+                    Color c = drawable_texture.GetPixel(x, y);
+                    if (c.r > 0.95)
+                        count++;
+                }
+            float tmp = count / (float)(drawable_texture.height * drawable_texture.width) * 100;
+            percentage.text = ((int)tmp).ToString();
         }
     }
 }

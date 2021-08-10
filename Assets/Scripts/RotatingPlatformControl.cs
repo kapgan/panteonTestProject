@@ -17,7 +17,6 @@ public class RotatingPlatformControl : MonoBehaviour
         {
             Vector3 direction = _rotateValue.rotateVector.z >= 0 ? new Vector3(-100,0,0) : new Vector3(100,0,0);
             collision.rigidbody.velocity=( (direction) * Time.deltaTime);
-          
         }
     }
 

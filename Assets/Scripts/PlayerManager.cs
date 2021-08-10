@@ -33,6 +33,10 @@ public class PlayerManager : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        leadBoardDisp();
+    }
+    void leadBoardDisp()
+    {
         if (leadBoard[1].enabled)
         {
             GameObject tmp;
@@ -48,7 +52,7 @@ public class PlayerManager : MonoBehaviour
                     }
                 }
             }
-            
+
             for (int i = 0; i < 4; i++)
             {
                 leadBoard[i].text = (i + 1) + ". " + siralama[i].name;

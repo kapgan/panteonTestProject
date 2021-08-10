@@ -99,8 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ajan: {fileID: 1453683402970861508}
-  fx: 300
-  playerObject: {fileID: 11400000, guid: fce5c26ece0bbe640b9cdfdd8457a323, type: 2}
+  anim: {fileID: 0}
 --- !u!195 &1453683402970861508
 NavMeshAgent:
   m_ObjectHideFlags: 0
