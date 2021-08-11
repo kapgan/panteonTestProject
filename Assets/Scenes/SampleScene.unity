@@ -3856,12 +3856,12 @@ PrefabInstance:
     - target: {fileID: 1911860520941751473, guid: 4a4392a9495bb9942897af9b4de470f7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.66
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1911860520941751473, guid: 4a4392a9495bb9942897af9b4de470f7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.28
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 1911860520941751473, guid: 4a4392a9495bb9942897af9b4de470f7,
         type: 3}
@@ -5432,6 +5432,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playOrPaintText: {fileID: 198223809}
+  panel: {fileID: 309001962}
+  Paint: 0
 --- !u!1 &1815334628 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1675752090157190283, guid: c737dd1ab34491849b5639b11006a27e,
@@ -6440,7 +6442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.22745098}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:

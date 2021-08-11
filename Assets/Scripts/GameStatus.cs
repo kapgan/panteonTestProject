@@ -6,6 +6,7 @@ using System.Collections.Concurrent;
 
 public class GameStatus : MonoBehaviour
 {
+  
     private void Update()
     {
         if (Input.GetKey(KeyCode.R))

@@ -16,11 +16,12 @@ public class FinishScript : MonoBehaviour
             player.Final = true;
             player.Animator.SetBool("Finish", true);
             cam.depth += 1;
-            draweblaWall.SetActive(true);
+            //draweblaWall.SetActive(true);
             foreach (var item in leadBoard)
             {
                 item.enabled = false;
             }
+            panel.GetComponent<MenuScript>().Paint = true;
             panel.SetActive(true);
         }
         else if (other.gameObject.tag == "Agent")
