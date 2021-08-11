@@ -13,8 +13,8 @@ public class FinishScript : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             var player = other.gameObject.GetComponent<PlayerController>();
-            player._final = true;
-            player._animator.SetBool("Finish", true);
+            player.Final = true;
+            player.Animator.SetBool("Finish", true);
             cam.depth += 1;
             draweblaWall.SetActive(true);
             foreach (var item in leadBoard)
@@ -26,8 +26,8 @@ public class FinishScript : MonoBehaviour
         else if (other.gameObject.tag == "Agent")
         {
             var agent = other.gameObject.GetComponent<AgentScript>();
-            agent.ajan.enabled = false;
-            agent.anim.SetBool("Finish", true);
+            agent.Ajan.enabled = false;
+            agent.Anim.SetBool("Finish", true);
         }
     }
 }

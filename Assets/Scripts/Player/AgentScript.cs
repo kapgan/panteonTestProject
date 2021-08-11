@@ -4,24 +4,24 @@ using UnityEngine;
 using UnityEngine.AI;
 public class AgentScript : MonoBehaviour
 {
-    public Animator anim;
-    public NavMeshAgent ajan;
+    public Animator Anim;
+    public NavMeshAgent Ajan;
 
     private Rigidbody rb;
     private Vector3 final = new Vector3(0, 3, 30);
 
     void Start()
     {
-        anim = GetComponent<Animator>();
-        ajan = transform.GetComponent<NavMeshAgent>();
+        Anim = GetComponent<Animator>();
+        Ajan = transform.GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
         wakeUp();
     }
 
     public void wakeUp()
     {
-        ajan.enabled = true;
-        ajan.SetDestination(final);
+        Ajan.enabled = true;
+        Ajan.SetDestination(final);
     }
 
 

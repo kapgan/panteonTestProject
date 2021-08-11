@@ -5,7 +5,7 @@ using UnityEngine.AI;
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] PlayerObject playerObject;
-    public Transform finish;
+    public Transform Finish;
     [SerializeField] float agentSpeed;
 
     Vector3[] points;
@@ -20,17 +20,22 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI[] leadBoard = new TMPro.TextMeshProUGUI[4];
     private void Start()
     {
-        points = playerObject._points;
-        agent = playerObject._agent;
+        points = playerObject.Points;
+        agent = playerObject.Agent;
         for (int i = 0; i < points.Length - 1; i++)
         {
             var a = Instantiate(agent, points[i], Quaternion.identity);
-            a.GetComponent<AgentScript>().ajan.speed = agentSpeed;
+            a.GetComponent<AgentScript>().Ajan.speed = agentSpeed;
             a.name = "Agent" + i;
             agents[i] = a;
             siralama[i] = agents[i];
         }
         siralama[10] = player;
+        foreach (var item in points)
+        {
+Debug.Log(item);
+        }
+        
     }
     private void FixedUpdate()
     {
@@ -45,7 +50,7 @@ public class PlayerManager : MonoBehaviour
             {
                 for (int j = i; j < siralama.Length; j++)
                 {
-                    if (Vector3.Distance(siralama[i].transform.position, finish.position) > Vector3.Distance(siralama[j].transform.position, finish.position))
+                    if (Vector3.Distance(siralama[i].transform.position, Finish.position) > Vector3.Distance(siralama[j].transform.position, Finish.position))
                     {
                         tmp = siralama[j];
                         siralama[j] = siralama[i];

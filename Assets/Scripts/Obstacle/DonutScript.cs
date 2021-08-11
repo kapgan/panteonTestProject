@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class DonutScript : MonoBehaviour
 {
-    public bool timer;
+   // public bool timer;
     public float time, t;
     public float x, x2, y = 0.5f, y2 = -0.5f;
     void Start()
     {
-        timer = true;
+       // timer = true;
     }
 
     void FixedUpdate()

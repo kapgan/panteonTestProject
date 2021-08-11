@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c758595abfbe2c946b4516e1b9c99ac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
-  ajan: {fileID: 1453683402970861508}
+  Anim: {fileID: 5866666021909216657, guid: df6d5eab3d472734b9f0b92a05a85b3d, type: 3}
+  Ajan: {fileID: 1453683402970861508}
 --- !u!195 &1453683402970861508
 NavMeshAgent:
   m_ObjectHideFlags: 0

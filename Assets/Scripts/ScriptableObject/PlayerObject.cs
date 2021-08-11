@@ -5,6 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "PlayerObject/PlayerValues", fileName = "New PLayer Values")]
 public class PlayerObject : ScriptableObject
 {
-    public Vector3[] _points;
-    public GameObject _agent;
+    public Vector3[] Points;
+    public GameObject Agent;
 }
