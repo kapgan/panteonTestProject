@@ -8,11 +8,11 @@ TagManager:
   - RightRotateObstacle
   - LeftRotateObstacle
   - Ground
-  - kenar
   - SlopeRoad
   - ObstaclePushing
-  - agent
   - RotateObs
+  - Agent
+  - Wall
   layers:
   - Default
   - TransparentFX

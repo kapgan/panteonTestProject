@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class HorizontalObstacleMovement : MonoBehaviour
 {
-
-   Rigidbody rb;
+    Rigidbody rb;
     [SerializeField]float speed,forceSpeed;
     public bool timer;
     public float time, interval;
@@ -14,8 +13,6 @@ public class HorizontalObstacleMovement : MonoBehaviour
         forceSpeed = speed;
         rb = GetComponent<Rigidbody>();
     }
-
-
     void Update()
     {
         updateTimer();

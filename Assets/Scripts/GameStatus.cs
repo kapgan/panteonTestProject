@@ -9,14 +9,15 @@ public class GameStatus : MonoBehaviour
     private void Update()
     {
         if (Input.GetKey(KeyCode.R))
-            restart();
+            Restart();
     }
-    void restart()
+    public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    public void LevelMenu()
+       public void QuitGame()
     {
-
+        Application.Quit();
     }
-}
+
+}  

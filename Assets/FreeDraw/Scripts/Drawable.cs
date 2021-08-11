@@ -13,6 +13,9 @@ namespace FreeDraw
     // 4. Hold down left mouse to draw on this texture!
     public class Drawable : MonoBehaviour
     {
+        [SerializeField] GameObject restartPanel;
+
+
         [SerializeField] TMPro.TextMeshProUGUI percentage;
         [SerializeField] Camera cam;
         public Texture2D heightmap;
@@ -20,9 +23,8 @@ namespace FreeDraw
         // PEN COLOUR
         public static Color Pen_Colour = Color.red;     // Change these to change the default drawing settings
                                                         // PEN WIDTH (actually, it's a radius, in pixels)
-        public static int Pen_Width = 20;
+        public static int Pen_Width = 10;
 
-        [SerializeField] bool bak = false;
         public delegate void Brush_Function(Vector2 world_position);
         // This is the function called when a left click happens
         // Pass in your own custom one to change the brush type
@@ -149,11 +151,7 @@ namespace FreeDraw
         // Detects when user is left clicking, which then call the appropriate function
         void Update()
         {
-            if (bak)
-            {
-                percentileCalc();
-                bak = false;
-            }
+         
 
             // Is the user holding down the left mouse button?
             bool mouse_held_down = Input.GetMouseButton(0);
@@ -283,7 +281,7 @@ namespace FreeDraw
 
                 }
             }
-            
+
             drawable_texture.Apply();
 
         }
@@ -340,21 +338,25 @@ namespace FreeDraw
                 ResetCanvas();
         }
 
+        void comeToRestartMenu()
+        {
+            restartPanel.SetActive(true);
+        }
         void percentileCalc()
         {
             float count = 0;
 
-            Debug.Log("1");
             for (int x = 0; x < drawable_texture.height; x++)
                 for (int y = 0; y < drawable_texture.width; y++)
                 {
-
                     Color c = drawable_texture.GetPixel(x, y);
                     if (c.r > 0.95)
                         count++;
                 }
             float tmp = count / (float)(drawable_texture.height * drawable_texture.width) * 100;
             percentage.text = ((int)tmp).ToString();
+           if((int)tmp==100)
+                comeToRestartMenu();
         }
     }
 }

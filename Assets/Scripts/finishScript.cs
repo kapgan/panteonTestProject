@@ -7,6 +7,7 @@ public class FinishScript : MonoBehaviour
     [SerializeField] Camera cam;
     [SerializeField] GameObject draweblaWall;
     [SerializeField] TMPro.TextMeshProUGUI[] leadBoard;
+    [SerializeField] GameObject panel;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
@@ -20,7 +21,7 @@ public class FinishScript : MonoBehaviour
             {
                 item.enabled = false;
             }
-       
+            panel.SetActive(true);
         }
         else if (other.gameObject.tag == "Agent")
         {

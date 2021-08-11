@@ -14,11 +14,12 @@ public class PlayerController : MonoBehaviour
     float _rotationSpeed = 720;
 
     public Animator _animator;
-    public bool _final = false;
     public float _playerXValue = 0;
     public float surtunme = 1;
+    public bool _final = false;
     public bool _isGrounded = true;
-    Rigidbody rb;
+
+    private Rigidbody rb;
 
     private void Start()
     {

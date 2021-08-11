@@ -5,7 +5,6 @@ using UnityEngine;
 public class ObstacleScript : MonoBehaviour
 {
     [SerializeField] PlayerObject _playerObject;
-
     private void playerMove(Collision col)
     {
         col.transform.position =_playerObject._points[Random.Range(1, _playerObject._points.Length)];
