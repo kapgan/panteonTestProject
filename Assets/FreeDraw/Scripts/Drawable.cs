@@ -1,7 +1,10 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
+/* Bu free bir asset scripti sadece bu iki fonksiyonu ben yazdým.
+ *   void comeToRestartMenu()
+     void percentileCalc()
+ */
 namespace FreeDraw
 {
 
@@ -250,8 +253,12 @@ namespace FreeDraw
             // Check if this is a valid position
             if (array_pos > cur_colors.Length || array_pos < 0)
                 return;
-
-            cur_colors[array_pos] = color;
+            try
+            {
+                cur_colors[array_pos] = color;
+            }
+            catch (System.Exception) { }
+         
         }
         public void ApplyMarkedPixelChanges()
         {

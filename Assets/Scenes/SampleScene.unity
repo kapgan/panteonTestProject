@@ -4402,7 +4402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a6522e14cb2204c9e5fcd5494f384d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 0}
+  playerObject: {fileID: 11400000, guid: fce5c26ece0bbe640b9cdfdd8457a323, type: 2}
 --- !u!1 &1352644225
 GameObject:
   m_ObjectHideFlags: 0
@@ -4563,7 +4563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forwardspeed: 2.6
-  jumpSpeed: 2
+  jumpSpeed: 3
   rotationSpeed: 720
   Animator: {fileID: 1387072788}
   PlayerXValue: 0
@@ -5786,7 +5786,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObject: {fileID: 11400000, guid: fce5c26ece0bbe640b9cdfdd8457a323, type: 2}
   Finish: {fileID: 655633409}
-  agentSpeed: 2
+  agentSpeed: 2.5
   player: {fileID: 1387072786}
   leadBoard:
   - {fileID: 524588383}
@@ -6800,7 +6800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a6522e14cb2204c9e5fcd5494f384d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 0}
+  playerObject: {fileID: 11400000, guid: fce5c26ece0bbe640b9cdfdd8457a323, type: 2}
 --- !u!4 &1732349699315314238
 Transform:
   m_ObjectHideFlags: 0
