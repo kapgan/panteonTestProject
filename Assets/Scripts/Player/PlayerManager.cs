@@ -31,10 +31,7 @@ public class PlayerManager : MonoBehaviour
             siralama[i] = agents[i];
         }
         siralama[10] = player;
-        foreach (var item in points)
-        {
-Debug.Log(item);
-        }
+    
         
     }
     private void FixedUpdate()

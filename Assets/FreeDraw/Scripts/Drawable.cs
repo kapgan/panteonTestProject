@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+
 /* Bu free bir asset scripti sadece bu iki fonksiyonu ben yazdým.
  *   void comeToRestartMenu()
      void percentileCalc()
@@ -21,8 +22,6 @@ namespace FreeDraw
 
         [SerializeField] TMPro.TextMeshProUGUI percentage;
         [SerializeField] Camera cam;
-        public Texture2D heightmap;
-        public Vector3 size = new Vector3(100, 10, 100);
         // PEN COLOUR
         public static Color Pen_Colour = Color.red;     // Change these to change the default drawing settings
                                                         // PEN WIDTH (actually, it's a radius, in pixels)
@@ -154,7 +153,7 @@ namespace FreeDraw
         // Detects when user is left clicking, which then call the appropriate function
         void Update()
         {
-         
+
 
             // Is the user holding down the left mouse button?
             bool mouse_held_down = Input.GetMouseButton(0);
@@ -171,7 +170,7 @@ namespace FreeDraw
                     // Use whatever function the current brush is
 
 
-                    Debug.Log(mouse_world_position.x + "--" + mouse_world_position.y);
+                    // Debug.Log(mouse_world_position.x + "--" + mouse_world_position.y);
                     current_brush(mouse_world_position);
                     percentileCalc();
                 }
@@ -214,6 +213,7 @@ namespace FreeDraw
 
             for (float lerp = 0; lerp <= 1; lerp += lerp_steps)
             {
+
                 cur_position = Vector2.Lerp(start_point, end_point, lerp);
                 MarkPixelsToColour(cur_position, width, color);
             }
@@ -230,17 +230,18 @@ namespace FreeDraw
             int center_x = (int)center_pixel.x;
             int center_y = (int)center_pixel.y;
             //int extra_radius = Mathf.Min(0, pen_thickness - 2);
-
-            for (int x = center_x - pen_thickness; x <= center_x + pen_thickness; x++)
+            float radius = Pen_Width;
+            float thickness = 0.4f;
+            float rIn = radius - thickness, rOut = radius + thickness;
+            for (float y = radius; y >= -radius; --y)
             {
-                // Check if the X wraps around the image, so we don't draw pixels on the other side of the image
-                if (x >= (int)drawable_sprite.rect.width || x < 0)
-                    continue;
-
-                for (int y = center_y - pen_thickness; y <= center_y + pen_thickness; y++)
+                for (float x = -radius; x < drawable_texture.width - center_x; x += 1)
                 {
-
-                    MarkPixelToChange(x, y, color_of_pen);
+                    float value = x * x + y * y;
+                    if (value <= rOut * rOut && 0 <= (center_x + x))
+                    {
+                        MarkPixelToChange(center_x + (int)x, center_y + (int)y, color_of_pen);
+                    }
                 }
             }
         }
@@ -258,7 +259,7 @@ namespace FreeDraw
                 cur_colors[array_pos] = color;
             }
             catch (System.Exception) { }
-         
+
         }
         public void ApplyMarkedPixelChanges()
         {
@@ -274,16 +275,24 @@ namespace FreeDraw
         public void ColourPixels(Vector2 center_pixel, int pen_thickness, Color color_of_pen)
         {
 
+
             // Figure out how many pixels we need to colour in each direction (x and y)
             int center_x = (int)center_pixel.x;
             int center_y = (int)center_pixel.y;
             //int extra_radius = Mathf.Min(0, pen_thickness - 2);
 
+
+
+
+
+            //for (int x = center_x - pen_thickness; x <= center_x + pen_thickness; x++)
             for (int x = center_x - pen_thickness; x <= center_x + pen_thickness; x++)
+
             {
+                //for (int y = center_y - pen_thickness; y <= center_y + pen_thickness; y++)
                 for (int y = center_y - pen_thickness; y <= center_y + pen_thickness; y++)
                 {
-
+                    //denendi
                     drawable_texture.SetPixel(x, y, color_of_pen);
 
                 }
@@ -353,8 +362,8 @@ namespace FreeDraw
         {
             float count = 0;
 
-            for (int x = 0; x < drawable_texture.height; x++)
-                for (int y = 0; y < drawable_texture.width; y++)
+            for (int x = 0; x < drawable_texture.width; x++)
+                for (int y = 0; y < drawable_texture.height; y++)
                 {
                     Color c = drawable_texture.GetPixel(x, y);
                     if (c.r > 0.95)
@@ -362,8 +371,11 @@ namespace FreeDraw
                 }
             float tmp = count / (float)(drawable_texture.height * drawable_texture.width) * 100;
             percentage.text = ((int)tmp).ToString();
-           if((int)tmp==100)
+            if ((int)tmp == 100)
                 comeToRestartMenu();
         }
     }
 }
+
+
+

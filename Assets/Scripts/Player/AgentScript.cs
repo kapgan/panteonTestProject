@@ -8,7 +8,7 @@ public class AgentScript : MonoBehaviour
     public NavMeshAgent Ajan;
 
     private Rigidbody rb;
-    private Vector3 final = new Vector3(0, 3, 30);
+     Vector3 final = new Vector3(0, 3, 33);
 
     void Start()
     {
