@@ -22,13 +22,18 @@ public class PlayerController : MonoBehaviour
     private bool IsGrounded = true;
     private bool _finished = false;
     private Rigidbody _rb;
-    private Animator _animator;
+    [SerializeField]private Animator _animator;
 
     #endregion
+    private void Awake()
+    {
+       // _animator = GetComponent<Animator>();
+    }
     private void Start()
     {
+      
         _rb = GetComponent<Rigidbody>();
-        _animator = GetComponent<Animator>();
+        
         FinishScript.PlayerGameFinished += GameFinish;
     }
    
@@ -59,7 +64,16 @@ public class PlayerController : MonoBehaviour
     }
     public void GameFinish(bool t)
     {
-        _animator.SetBool("Finish", t);
+        try
+        {
+         _animator.SetTrigger("Finish");
+        }
+        catch (System.Exception)
+        {
+
+          
+        }
+          
         _finished = t;
     }
     private void OnCollisionExit(Collision collision)

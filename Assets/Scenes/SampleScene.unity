@@ -1435,7 +1435,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &329419035 stripped
 Transform:
@@ -4207,12 +4207,12 @@ PrefabInstance:
     - target: {fileID: 1911860520941751473, guid: 4a4392a9495bb9942897af9b4de470f7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.141
+      value: 2.1
       objectReference: {fileID: 0}
     - target: {fileID: 1911860520941751473, guid: 4a4392a9495bb9942897af9b4de470f7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.984
+      value: 28.42
       objectReference: {fileID: 0}
     - target: {fileID: 1911860520941751473, guid: 4a4392a9495bb9942897af9b4de470f7,
         type: 3}
@@ -4808,14 +4808,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2172d43ecfad04d41aacea47db94b435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animator: {fileID: 1387072788}
-  PlayerXValue: 0
-  Friction: 1
-  Final: 0
-  IsGrounded: 1
   forwardspeed: 2.6
   jumpSpeed: 3
   rotationSpeed: 720
+  PlayerXValue: 0
+  Friction: 1
+  _animator: {fileID: 1387072788}
 --- !u!114 &1387072792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5950,7 +5948,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1881151708
 GameObject:
@@ -6114,8 +6112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faa99dd4a03966642b68fb9198253f0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FinishTransform: {fileID: 374542270}
   playerObject: {fileID: 11400000, guid: fce5c26ece0bbe640b9cdfdd8457a323, type: 2}
-  Finish: {fileID: 374542270}
   agentSpeed: 2.5
   player: {fileID: 1387072786}
   leadBoard:

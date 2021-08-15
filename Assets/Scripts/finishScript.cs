@@ -17,7 +17,7 @@ public class FinishScript : MonoBehaviour
         {
             PlayerGameFinished?.Invoke(true);
             cam.depth += 1;
-
+           // other.GetComponent<PlayerController>()._animator.SetBool("Finish", true);
             foreach (var item in leadBoard)
             {
                 item.enabled = false;

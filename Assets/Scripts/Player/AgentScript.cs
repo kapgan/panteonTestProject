@@ -14,11 +14,12 @@ public class AgentScript : MonoBehaviour
     public Animator Anim { get { return _anim; } set { _anim = value; } }
     private void Awake()
     {
+        _anim = GetComponent<Animator>();
         _agent = transform.GetComponent<NavMeshAgent>();
     }
     void Start()
     {
-        _anim = GetComponent<Animator>();
+        
         _rb = GetComponent<Rigidbody>();
         AgentWakeUp();
     }
