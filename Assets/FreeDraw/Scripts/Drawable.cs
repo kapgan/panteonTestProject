@@ -361,7 +361,6 @@ namespace FreeDraw
         void percentileCalc()
         {
             float count = 0;
-
             for (int x = 0; x < drawable_texture.width; x++)
                 for (int y = 0; y < drawable_texture.height; y++)
                 {

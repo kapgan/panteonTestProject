@@ -4,24 +4,29 @@ using UnityEngine;
 using UnityEngine.AI;
 public class AgentScript : MonoBehaviour
 {
-    public Animator Anim;
-    public NavMeshAgent Ajan;
+    private Animator _anim;
+    private NavMeshAgent _agent;
 
-    private Rigidbody rb;
-     Vector3 final = new Vector3(0, 3, 33);
+    private Rigidbody _rb;
+    private Vector3 final = new Vector3(0, 3, 33);
 
+    public NavMeshAgent Agent { get { return _agent; } set { _agent = value; } }
+    public Animator Anim { get { return _anim; } set { _anim = value; } }
+    private void Awake()
+    {
+        _agent = transform.GetComponent<NavMeshAgent>();
+    }
     void Start()
     {
-        Anim = GetComponent<Animator>();
-        Ajan = transform.GetComponent<NavMeshAgent>();
-        rb = GetComponent<Rigidbody>();
-        wakeUp();
+        _anim = GetComponent<Animator>();
+        _rb = GetComponent<Rigidbody>();
+        AgentWakeUp();
     }
-
-    public void wakeUp()
+  
+    public void AgentWakeUp()
     {
-        Ajan.enabled = true;
-        Ajan.SetDestination(final);
+        _agent.enabled = true;
+        _agent.SetDestination(final);
     }
 
 

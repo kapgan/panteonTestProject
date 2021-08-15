@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,30 +7,34 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] 
+    #region Fields
+    [SerializeField]
     float forwardspeed = 5f;
-    [SerializeField]    
+    [SerializeField]
     float jumpSpeed = 2f;
     [SerializeField]
     float rotationSpeed = 720;
 
-    public Animator Animator;
+   
     public float PlayerXValue = 0;
     public float Friction = 1;
-    public bool Final = false;
-    public bool IsGrounded = true;
+    
+    private bool IsGrounded = true;
+    private bool _finished = false;
+    private Rigidbody _rb;
+    private Animator _animator;
 
-    private Rigidbody rb;
-
+    #endregion
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        Animator = GetComponent<Animator>();
+        _rb = GetComponent<Rigidbody>();
+        _animator = GetComponent<Animator>();
+        FinishScript.PlayerGameFinished += GameFinish;
     }
-
+   
     private void Update()
     {
-        if (!Final)
+        if (!_finished)
         {
             Vector3 m_Input = new Vector3(Input.GetAxis("Horizontal") - PlayerXValue, 0, Input.GetAxis("Vertical"));
             m_Input.Normalize();
@@ -37,27 +42,29 @@ public class PlayerController : MonoBehaviour
 
             if (m_Input != Vector3.zero)
             {
-                Animator.SetBool("Running", true);
+                _animator.SetBool("Running", true);
                 Quaternion toRotation = Quaternion.LookRotation(m_Input, Vector3.up);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
             }
-            else
-                Animator.SetBool("Running", false);
-
+            else {
+                _animator.SetBool("Running", false);
+            }
             if (Input.GetKeyDown(KeyCode.Space) && IsGrounded)
             {
                 IsGrounded = false;
-                rb.AddForce(new Vector3(0, jumpSpeed / Friction, 0),ForceMode.Impulse);
-                Animator.SetTrigger("Jump");
-               
+                _rb.AddForce(new Vector3(0, jumpSpeed / Friction, 0),ForceMode.Impulse);
+                _animator.SetTrigger("Jump");
             }
         }
     }
-
+    public void GameFinish(bool t)
+    {
+        _animator.SetBool("Finish", t);
+        _finished = t;
+    }
     private void OnCollisionExit(Collision collision)
     {
         IsGrounded = false;
-     
     }
 
     private void OnCollisionStay(Collision collision)

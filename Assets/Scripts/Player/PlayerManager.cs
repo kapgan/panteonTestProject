@@ -4,20 +4,19 @@ using UnityEngine;
 using UnityEngine.AI;
 public class PlayerManager : MonoBehaviour
 {
+    public Transform FinishTransform;
+
     [SerializeField] PlayerObject playerObject;
-    public Transform Finish;
     [SerializeField] float agentSpeed;
+    [SerializeField] GameObject player;
+    [SerializeField] TMPro.TextMeshProUGUI[] leadBoard = new TMPro.TextMeshProUGUI[4];
 
     Vector3[] points;
     GameObject agent;
-
-    [SerializeField] GameObject player;
-
     GameObject[] agents = new GameObject[10];
     GameObject[] siralama = new GameObject[11];
 
-    float distance;
-    [SerializeField] TMPro.TextMeshProUGUI[] leadBoard = new TMPro.TextMeshProUGUI[4];
+
     private void Start()
     {
         points = playerObject.Points;
@@ -25,7 +24,7 @@ public class PlayerManager : MonoBehaviour
         for (int i = 0; i < points.Length - 1; i++)
         {
             var a = Instantiate(agent, points[i], Quaternion.identity);
-            a.GetComponent<AgentScript>().Ajan.speed = agentSpeed;
+            a.GetComponent<AgentScript>().Agent.speed = agentSpeed;
             a.name = "Agent" + i;
             agents[i] = a;
             siralama[i] = agents[i];
@@ -36,18 +35,18 @@ public class PlayerManager : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        leadBoardDisp();
+        if (leadBoard[1].enabled)
+            leadBoardDisp();
     }
     void leadBoardDisp()
     {
-        if (leadBoard[1].enabled)
-        {
+       
             GameObject tmp;
             for (int i = 0; i < siralama.Length - 1; i++)
             {
                 for (int j = i; j < siralama.Length; j++)
                 {
-                    if (Vector3.Distance(siralama[i].transform.position, Finish.position) > Vector3.Distance(siralama[j].transform.position, Finish.position))
+                    if (Vector3.Distance(siralama[i].transform.position, FinishTransform.position) > Vector3.Distance(siralama[j].transform.position, FinishTransform.position))
                     {
                         tmp = siralama[j];
                         siralama[j] = siralama[i];
@@ -60,6 +59,6 @@ public class PlayerManager : MonoBehaviour
             {
                 leadBoard[i].text = (i + 1) + ". " + siralama[i].name;
             }
-        }
+        
     }
 }

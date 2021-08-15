@@ -18,9 +18,9 @@ public class ObstacleScript : MonoBehaviour
         }
         if ( collision.gameObject.tag == "Agent")
         {
-            collision.gameObject.GetComponent<AgentScript>().Ajan.enabled = false;
+            collision.gameObject.GetComponent<AgentScript>().Agent.enabled = false;
             playerMove(collision);
-            collision.gameObject.GetComponent<AgentScript>().wakeUp();
+            collision.gameObject.GetComponent<AgentScript>().AgentWakeUp();
         }
     }
 }

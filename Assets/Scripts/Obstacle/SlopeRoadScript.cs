@@ -9,13 +9,13 @@ public class SlopeRoadScript : MonoBehaviour
         if (collision.gameObject.tag == "Player")
             collision.rigidbody.GetComponent<PlayerController>().Friction = 2;
         if (collision.gameObject.tag == "Agent")
-            collision.gameObject.GetComponent<AgentScript>().Ajan.speed /=2 ;
+            collision.gameObject.GetComponent<AgentScript>().Agent.speed /=2 ;
     }
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.tag=="Player")
             collision.rigidbody.GetComponent<PlayerController>().Friction = 1;
         if (collision.gameObject.tag == "Agent")
-            collision.gameObject.GetComponent<AgentScript>().Ajan.speed*=2;
+            collision.gameObject.GetComponent<AgentScript>().Agent.speed*=2;
     }
 }
