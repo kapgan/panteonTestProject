@@ -6,7 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     public Transform FinishTransform;
 
-    [SerializeField] PlayerObject playerObject;
+    [SerializeField] StartObjectPoints starObjectPoints;
     [SerializeField] float agentSpeed;
     [SerializeField] GameObject player;
     [SerializeField] TMPro.TextMeshProUGUI[] leadBoard = new TMPro.TextMeshProUGUI[4];
@@ -19,8 +19,8 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
-        points = playerObject.Points;
-        agent = playerObject.Agent;
+        points = starObjectPoints.Points;
+        agent = starObjectPoints.Agent;
         for (int i = 0; i < points.Length - 1; i++)
         {
             var a = Instantiate(agent, points[i], Quaternion.identity);
@@ -30,8 +30,6 @@ public class PlayerManager : MonoBehaviour
             siralama[i] = agents[i];
         }
         siralama[10] = player;
-    
-        
     }
     private void FixedUpdate()
     {
@@ -40,7 +38,6 @@ public class PlayerManager : MonoBehaviour
     }
     void leadBoardDisp()
     {
-       
             GameObject tmp;
             for (int i = 0; i < siralama.Length - 1; i++)
             {

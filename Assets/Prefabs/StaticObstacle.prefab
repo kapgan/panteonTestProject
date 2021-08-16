@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 883140753044254046}
   - component: {fileID: 6071892645316170820}
   - component: {fileID: 3187968841617822554}
+  - component: {fileID: 935457141}
   m_Layer: 0
   m_Name: StaticObstacle
   m_TagString: Obstacle
@@ -106,4 +107,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a6522e14cb2204c9e5fcd5494f384d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerObject: {fileID: 11400000, guid: fce5c26ece0bbe640b9cdfdd8457a323, type: 2}
+  startobjectPoints: {fileID: 11400000, guid: fce5c26ece0bbe640b9cdfdd8457a323, type: 2}
+--- !u!208 &935457141
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675752090157190283}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.064, y: 0.045, z: 0.021000002}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

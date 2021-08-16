@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2f7e13ab01d9494daebded013817c14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotateValue: {fileID: 11400000, guid: 50b881b31a036984cbc0be7989a7a72d, type: 2}
+  rotateValue: {fileID: 0}
 --- !u!114 &213816025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,7 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e23d6555e9a714688246b6028d2632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
   speed: 2
   forceSpeed: 0
   timer: 0
@@ -140,4 +139,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a6522e14cb2204c9e5fcd5494f384d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerObject: {fileID: 11400000, guid: fce5c26ece0bbe640b9cdfdd8457a323, type: 2}
+  startobjectPoints: {fileID: 11400000, guid: fce5c26ece0bbe640b9cdfdd8457a323, type: 2}

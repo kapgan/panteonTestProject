@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ObstacleScript : MonoBehaviour
 {
-    [SerializeField] PlayerObject playerObject;
+    [SerializeField] StartObjectPoints startobjectPoints;
     private void playerMove(Collision col)
     {
-        col.transform.position =playerObject.Points[Random.Range(1, playerObject.Points.Length)];
+        col.transform.position =startobjectPoints.Points[Random.Range(1, startobjectPoints.Points.Length)];
         col.rigidbody.velocity = (Vector3.zero);
     }
     private void OnCollisionEnter(Collision collision)
