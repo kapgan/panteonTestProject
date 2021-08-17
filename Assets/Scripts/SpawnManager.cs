@@ -7,7 +7,6 @@ namespace PanteonGames
 {
     public class SpawnManager : MonoBehaviour
     {
-        
         [SerializeField] LeaderBoard leaderBoard;
         [SerializeField] StartObjectPoints starObjectPoints;
         [SerializeField] GameObject player;

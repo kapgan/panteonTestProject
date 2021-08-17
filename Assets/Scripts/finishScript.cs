@@ -31,6 +31,7 @@ namespace PanteonGames
                 var agent = other.gameObject.GetComponent<AgentScript>();
                 agent.Agent.enabled = false;
                 agent.Anim.SetBool("Finish", true);
+                
             }
         }
     }

@@ -8,6 +8,5 @@ namespace PanteonGames
     public class RotateObject : ScriptableObject
     {
         public Vector3 rotateVector;
-
     }
 }

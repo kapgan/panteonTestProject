@@ -7,7 +7,7 @@ namespace PanteonGames
     public class RotatingPlatformControl : MonoBehaviour
     {
         [SerializeField] RotateObject rotateValue;
-
+        [SerializeField] float x;
         private void Update()
         {
             transform.Rotate(rotateValue.rotateVector * Time.deltaTime);
@@ -16,8 +16,8 @@ namespace PanteonGames
         {
             if (collision.rigidbody)
             {
-                Vector3 direction = rotateValue.rotateVector.z >= 0 ? new Vector3(-rotateValue.rotateVector.z, 0, 0) : new Vector3(-rotateValue.rotateVector.z, 0, 0);
-                 collision.rigidbody.velocity = ((direction*3) * Time.deltaTime);
+                Vector3 direction = rotateValue.rotateVector.z >= 0 ? new Vector3(-x, 0, 0) : new Vector3(x,0, 0);
+                 collision.rigidbody.velocity = ((direction) * Time.deltaTime);
             }
         }
     }

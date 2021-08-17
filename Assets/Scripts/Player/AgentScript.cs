@@ -12,10 +12,11 @@ namespace PanteonGames
         private Rigidbody _agentRigidBody;
         private Vector3 _finish;
 
-        public NavMeshAgent Agent { get { return _agent; } set { _agent = value; } }
-        public Animator Anim { get { return _anim; } set { _anim = value; } }
 
         public Vector3 Finish { get => _finish; set => _finish = value; }
+        public Animator Anim { get => _anim; set => _anim = value; }
+        public NavMeshAgent Agent { get => _agent; set => _agent = value; }
+
         private void Awake()
         {
             _agent = transform.GetComponent<NavMeshAgent>();
@@ -31,5 +32,6 @@ namespace PanteonGames
             _agent.enabled = true;
             _agent.SetDestination(_finish);
         }
+
     }
 }
