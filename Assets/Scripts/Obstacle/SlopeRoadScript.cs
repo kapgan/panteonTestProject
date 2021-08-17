@@ -2,20 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlopeRoadScript : MonoBehaviour
+namespace PanteonGames
 {
-    private void OnCollisionEnter(Collision collision)
+    public class SlopeRoadScript : MonoBehaviour
     {
-        if (collision.gameObject.tag == "Player")
-            collision.rigidbody.GetComponent<PlayerController>().PlayerMoveFriction = 2;
-        if (collision.gameObject.tag == "Agent")
-            collision.gameObject.GetComponent<AgentScript>().Agent.speed /=2 ;
-    }
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.tag=="Player")
-            collision.rigidbody.GetComponent<PlayerController>().PlayerMoveFriction = 1;
-        if (collision.gameObject.tag == "Agent")
-            collision.gameObject.GetComponent<AgentScript>().Agent.speed*=2;
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.tag == "Player")
+                collision.rigidbody.GetComponent<PlayerController>().PlayerMoveFriction = 2;
+            if (collision.gameObject.tag == "Agent")
+                collision.gameObject.GetComponent<AgentScript>().Agent.speed /= 2;
+        }
+        private void OnCollisionExit(Collision collision)
+        {
+            if (collision.gameObject.tag == "Player")
+                collision.rigidbody.GetComponent<PlayerController>().PlayerMoveFriction = 1;
+            if (collision.gameObject.tag == "Agent")
+                collision.gameObject.GetComponent<AgentScript>().Agent.speed *= 2;
+        }
     }
 }

@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstaclePushing : MonoBehaviour
+namespace PanteonGames
 {
-    [SerializeField] float fx = 100;
-    private void OnCollisionEnter(Collision collision)
+    public class ObstaclePushing : MonoBehaviour
     {
-        if (collision.rigidbody)
+        [SerializeField] float fx = 100;
+        private void OnCollisionEnter(Collision collision)
         {
-            Vector3 direction = (transform.position - collision.transform.position).normalized;
-            collision.rigidbody.AddForce(direction * fx);
-        }
+            if (collision.rigidbody)
+            {
+                Vector3 direction = (transform.position - collision.transform.position).normalized;
+                collision.rigidbody.AddForce(direction * fx);
+            }
 
+        }
     }
 }

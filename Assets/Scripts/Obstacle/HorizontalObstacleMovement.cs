@@ -2,47 +2,54 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HorizontalObstacleMovement : MonoBehaviour
+namespace PanteonGames
 {
-    Rigidbody rb;
-    [SerializeField]float speed,forceSpeed;
-    public bool timer;
-    public float time, interval;
-    void Start()
+    public class HorizontalObstacleMovement : MonoBehaviour
     {
-        forceSpeed = speed;
-        rb = GetComponent<Rigidbody>();
-    }
-    void Update()
-    {
-        updateTimer();
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag=="Obstacle")
+        [SerializeField] bool timer;
+        [SerializeField] float time, interval;
+        [SerializeField] float speed, forceSpeed;
+        [SerializeField] RotateObject rotateValue;
+
+        private Rigidbody _rb;
+
+        void Start()
         {
-            timer = true;
+            forceSpeed = speed;
+            _rb = GetComponent<Rigidbody>();
         }
-    }
-    void updateTimer()
-    {
-        rb.velocity = Vector3.right * forceSpeed;
-        if (timer)
+        private void Update()
         {
-            time += Time.deltaTime;
-            if (time > interval)
+            transform.Rotate(rotateValue.rotateVector * Time.deltaTime);
+            updateTimer();
+        }
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Obstacle")
             {
-                if (forceSpeed > 0)
+                timer = true;
+            }
+        }
+        void updateTimer()
+        {
+            _rb.velocity = Vector3.right * forceSpeed;
+            if (timer)
+            {
+                time += Time.deltaTime;
+                if (time > interval)
                 {
-                    forceSpeed = -speed;
-                    timer = false;
-                    time = 0;
-                }
-                else if (forceSpeed < 0)
-                {
-                    forceSpeed = speed;
-                    timer = false;
-                    time = 0;
+                    if (forceSpeed > 0)
+                    {
+                        forceSpeed = -speed;
+                        timer = false;
+                        time = 0;
+                    }
+                    else if (forceSpeed < 0)
+                    {
+                        forceSpeed = speed;
+                        timer = false;
+                        time = 0;
+                    }
                 }
             }
         }

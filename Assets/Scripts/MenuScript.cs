@@ -2,32 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class MenuScript : MonoBehaviour
+
+namespace PanteonGames
 {
-    [SerializeField] TMPro.TextMeshProUGUI playOrPaintText;
-    [SerializeField] GameObject panel;
-
-    public bool Paint = false;
-
-    private void Start()
+    public class MenuScript : MonoBehaviour
     {
-        Time.timeScale = 0;
-    }
+        [SerializeField] TMPro.TextMeshProUGUI playOrPaintText;
+        [SerializeField] GameObject panel;
 
+        public bool Paint = false;
 
-    public void PlayGameOrPaintLevel()
-    {
-        Time.timeScale = 1;
-        gameObject.SetActive(false);
-        playOrPaintText.text = "Paint GO";
-        if (Paint)
-            panel.SetActive(true);
-    }
-
- 
-
-    public void ExitGame()
-    {
-        Application.Quit();
+        private void Start()
+        {
+            Time.timeScale = 0;
+        }
+        public void PlayGameOrPaintLevel()
+        {
+            Time.timeScale = 1;
+            gameObject.SetActive(false);
+            playOrPaintText.text = "Paint GO";
+            if (Paint)
+                panel.SetActive(true);
+        }
+        public void ExitGame()
+        {
+            Application.Quit();
+        }
     }
 }

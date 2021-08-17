@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "StarterObject/StartObjectPoints", fileName = "New Start Values")]
-public class StartObjectPoints : ScriptableObject
+
+namespace PanteonGames
 {
-    public Vector3[] Points;
-    public GameObject Agent;    
+    [CreateAssetMenu(menuName = "StarterObject/StartObjectPoints", fileName = "New Start Values")]
+    public class StartObjectPoints : ScriptableObject
+    {
+        public Vector3[] Points;
+        public GameObject Agent;
+    }
 }

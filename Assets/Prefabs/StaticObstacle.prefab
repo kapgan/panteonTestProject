@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 883140753044254046}
   - component: {fileID: 6071892645316170820}
   - component: {fileID: 3187968841617822554}
-  - component: {fileID: 935457141}
+  - component: {fileID: 1391687269}
   m_Layer: 0
   m_Name: StaticObstacle
   m_TagString: Obstacle
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startobjectPoints: {fileID: 11400000, guid: fce5c26ece0bbe640b9cdfdd8457a323, type: 2}
---- !u!208 &935457141
+--- !u!208 &1391687269
 NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
